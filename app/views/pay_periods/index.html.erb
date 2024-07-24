@@ -1,0 +1,14 @@
+<h1>Pay periods</h1>
+
+<div class="pay_periods">
+  <% @pay_periods.each do |pay_period| %>
+    <%= render pay_period %>
+    <p class="actions">
+      <%= link_to Icon.new(:edit), edit_pay_period_path(pay_period) %>
+    </p>
+  <% end %>
+</div>
+
+<%- content_for :secondary_content do -%>
+  <%= link_to "New pay period", new_pay_period_path %>
+<%- end -%>

@@ -1,0 +1,15 @@
+.pay_periods {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  row-gap: var(--line-height);
+  column-gap: 1rem;
+}
+
+.pay_periods > div {
+  min-width: 25rem; // magic-number: determined by eye for long content
+}
+
+.pay_periods:has(> p.actions) {
+  grid-template-columns: min-content min-content;
+}
