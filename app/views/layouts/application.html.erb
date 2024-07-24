@@ -15,6 +15,7 @@
   <body>
     <div id="content_wrapper">
       <header id="primary_header"><%= render partial: "layouts/header" %></header>
+      <%= render partial: "layouts/flash_messages" %>
       <div id="primary_content">
         <%= yield %>
       </div>

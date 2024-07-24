@@ -1,0 +1,17 @@
+#flash_messages {
+  & > div {
+    border: 1px solid var(--flash-color);
+    border-radius: 3px;
+    background-color: hsl(from var(--flash-color) h s l / 0.2);
+    margin-bottom: var(--line-height);
+    padding: calc(0.5 * var(--line-height) - 1px) 1rem;
+  }
+
+  .notice {
+    --flash-color: #5dcd29;
+  }
+
+  .alert {
+    --flash-color: #e44c26;
+  }
+}

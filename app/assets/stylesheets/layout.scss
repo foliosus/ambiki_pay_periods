@@ -1,9 +1,10 @@
 #content_wrapper {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  grid-template-rows: min-content auto min-content;
+  grid-template-rows: min-content min-content auto min-content;
   grid-template-areas:
     "header header"
+    "flash_messages flash_messages"
     "primary_content secondary_content"
     "footer footer"
   ;
@@ -12,6 +13,10 @@
 
   #primary_header {
     grid-area: header;
+  }
+
+  #flash_messages {
+    grid-area: flash_messages;
   }
 
   #primary_content {

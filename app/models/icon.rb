@@ -1,11 +1,13 @@
 class Icon
   LOOKUP_MAP = {
     add: "circle-plus",
-    edit: "pen-to-square"
+    alert: "circle-xmark",
+    edit: "pen-to-square",
+    notice: "circle-check",
   }
 
   def initialize(icon_name)
-    @icon_name = icon_name
+    @icon_name = icon_name.to_sym
   end
 
   def to_s
