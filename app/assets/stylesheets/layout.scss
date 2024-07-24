@@ -1,0 +1,28 @@
+#content_wrapper {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: min-content auto min-content;
+  grid-template-areas:
+    "header header"
+    "primary_content secondary_content"
+    "footer footer"
+  ;
+  max-width: 75rem;
+  margin: 0 auto;
+
+  #primary_header {
+    grid-area: header;
+  }
+
+  #primary_content {
+    grid-area: primary_content;
+  }
+
+  #secondary_content {
+    grid-area: secondary_content;
+  }
+
+  #primary_footer {
+    grid-area: footer
+  }
+}

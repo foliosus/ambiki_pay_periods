@@ -1,8 +1,12 @@
 @import "reset.scss";
 @import "typography.scss";
+@import "layout.scss";
+@import "header.scss";
+@import "footer.scss";
+@import "pay_periods.scss";
 
 body {
   --font-size: 18px;
   --line-height: 22px;
+  --color-hairline: #ddd;
 }
-

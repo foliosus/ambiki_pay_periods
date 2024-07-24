@@ -13,6 +13,15 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="content_wrapper">
+      <header id="primary_header"><%= render partial: "layouts/header" %></header>
+      <div id="primary_content">
+        <%= yield %>
+      </div>
+      <div id="secondary_content">
+        <%= yield :secondary_content %>
+      </div>
+      <footer id="primary_footer"><%= render partial: "layouts/footer" %></footer>
+    </div>
   </body>
 </html>

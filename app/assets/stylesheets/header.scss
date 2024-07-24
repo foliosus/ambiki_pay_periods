@@ -1,0 +1,25 @@
+#primary_header {
+  margin-bottom: var(--line-height);
+  border-bottom: 1px solid var(--color-hairline);
+  padding: calc(0.5 * var(--line-height)) 0;
+  font-size: calc(0.75 * var(--font-size));
+  color: #999;
+
+  display: grid;
+  grid-template-columns: min-content auto min-content;
+  grid-template-rows: auto;
+  grid-template-areas: "logo spacer nav";
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .logo {
+    grid-area: logo;
+  }
+
+  nav {
+    grid-area: nav;
+    text-wrap: nowrap;
+  }
+}
