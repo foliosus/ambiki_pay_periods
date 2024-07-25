@@ -17,7 +17,7 @@ class PayPeriodsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create pay_period" do
     assert_difference("PayPeriod.count") do
-      post pay_periods_url, params: { pay_period: { end_date: @pay_period.end_date, start_date: @pay_period.start_date } }
+      post pay_periods_url, params: { pay_period: { start_date: @pay_period.end_date + 1, end_date: @pay_period.end_date + 2 } }
     end
 
     assert_redirected_to pay_period_url(PayPeriod.last)
