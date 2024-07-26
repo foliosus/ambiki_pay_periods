@@ -16,10 +16,30 @@
 
   .logo {
     grid-area: logo;
+    width: var(--line-height);
+    height: var(--line-height);
+
+    a {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      text-indent: -999em;
+      background: transparent url('leaves.png') no-repeat;
+      background-size: contain;
+    }
   }
 
   nav {
     grid-area: nav;
     text-wrap: nowrap;
+
+    a {
+      text-decoration: none;
+    }
+
+    a+a {
+      margin-left: 1rem;
+    }
   }
 }

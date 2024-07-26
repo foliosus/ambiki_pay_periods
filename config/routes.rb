@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "pay_periods#index"
+  root "pay_periods#calendar"
 
   resources :pay_periods do
     member do
