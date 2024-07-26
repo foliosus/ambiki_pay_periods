@@ -1,0 +1,28 @@
+<div class="simple-calendar" data-controller="calendar">
+  <div class="calendar-heading">
+    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+
+    <nav>
+      <%= link_to Icon.new(:go_left), calendar.url_for_previous_view %>
+      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
+      <%= link_to Icon.new(:go_right), calendar.url_for_next_view %>
+    </nav>
+  </div>
+
+  <div class="calendar-grid">
+    <% 7.times do |wday| %>
+      <div class="calendar-header wday-<%= wday %>"><%= t('date.abbr_day_names')[wday] %></div>
+    <%- end -%>
+
+    <% date_range.each_slice(7) do |week| %>
+      <% week.each do |day| %>
+        <%- css_classes = ["calendar-day", "wday-#{day.wday}"] -%>
+        <%- css_classes << "today" if day.today? -%>
+        <%- css_classes << "first_of_month" if day == day.beginning_of_month -%>
+        <div class="<%= css_classes.join(" ") %>">
+          <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
+        </div>
+      <% end %>
+    <% end %>
+  </div> <!-- /table-grid -->
+</div> <!-- /simple-calendar -->

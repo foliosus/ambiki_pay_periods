@@ -1,0 +1,72 @@
+.simple-calendar {
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: calc(2 * var(--line-height));
+    grid-auto-rows: calc(1.75 * var(--line-height));
+
+    .wday-0 {
+      grid-column-start: 1;
+    }
+    .wday-1 {
+      grid-column-start: 2;
+    }
+    .wday-2 {
+      grid-column-start: 3;
+    }
+    .wday-3 {
+      grid-column-start: 4;
+    }
+    .wday-4 {
+      grid-column-start: 5;
+    }
+    .wday-5 {
+      grid-column-start: 6;
+    }
+    .wday-6 {
+      grid-column-start: 7;
+    }
+  }
+
+  .calendar-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: calc(0.5 * var(--line-height));
+
+    .calendar-title {
+      font-size: calc(1.5 * var(--font-size));
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+
+  .calendar-header {
+    font-size: calc(1.25 * var(--font-size));
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .calendar-day {
+    position: relative;
+    padding: 1px calc(0.25 * var(--line-height));
+    border-color: 1px solid var(--color-hairline);
+  }
+
+  span.date {
+    font-size: calc(0.75 * var(--font-size));
+    color: #666;
+  }
+
+  .first_of_month span.date {
+    font-weight: bold;
+  }
+
+  .today span.date {
+    font-weight: bold;
+    font-size: var(--font-size);
+  }
+}

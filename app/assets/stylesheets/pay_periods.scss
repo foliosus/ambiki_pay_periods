@@ -13,3 +13,22 @@
 .pay_periods:has(> p.actions) {
   grid-template-columns: min-content min-content;
 }
+
+.simple-calendar {
+  .pay_period_indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+
+    &.odd {
+      background-color: #adfbfd;
+    }
+
+    &.even {
+      background-color: #98e6e8;
+    }
+  }
+}

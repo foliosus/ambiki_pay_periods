@@ -4,6 +4,18 @@ class PayPeriodsController < ApplicationController
     @pay_periods = PayPeriod.all
   end
 
+  # GET /pay_periods/calendar
+  def calendar
+    start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : Date.today
+    start_date = start_date - start_date.wday # Always align to Sunday
+    end_date = start_date.advance(weeks: 12) - 1
+    @calendar_presenter = PayPeriod::CalendarPresenter.new(
+      start_date: start_date,
+      end_date: end_date,
+      pay_periods: PayPeriod.inclusive_of_dates(start_date, end_date).all
+    )
+  end
+
   # GET /pay_periods/new
   def new
     @pay_period = PayPeriod.new
