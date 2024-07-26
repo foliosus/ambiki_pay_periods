@@ -1,8 +1,11 @@
 class Icon
   LOOKUP_MAP = {
-    add: "circle-plus",
+    add: "square-plus",
     alert: "circle-xmark",
+    delete: "trash-can",
     edit: "pen-to-square",
+    go_left: "circle-left",
+    go_right: "circle-right",
     notice: "circle-check",
   }
 

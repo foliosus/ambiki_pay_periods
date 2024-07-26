@@ -1,8 +1,6 @@
 <%= form_with(model: pay_period) do |form| %>
   <% if pay_period.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(pay_period.errors.count, "error") %> prohibited this pay_period from being saved:</h2>
-
+    <div class="errors">
       <ul>
         <% pay_period.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,6 +8,10 @@
       </ul>
     </div>
   <% end %>
+
+  <%- if turbo_frame_request? && @calendar_start_date -%>
+    <input type="hidden" name="start_date" value="<%= @calendar_start_date %>">
+  <%- end -%>
 
   <div class="fields">
     <%= form.label :start_date, style: "display: block" %>
@@ -20,6 +22,11 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%- if pay_period.persisted? -%>
+      <%= form.submit "Update pay period" %>
+      <%= link_to Icon.new(:delete), pay_period_path(@pay_period, start_date: @calendar_start_date), class: "button", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <%- else -%>
+      <%= form.submit "Create pay period" %>
+    <%- end -%>
   </div>
 <% end %>

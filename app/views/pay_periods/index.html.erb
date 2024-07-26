@@ -5,10 +5,11 @@
     <%= render pay_period %>
     <p class="actions">
       <%= link_to Icon.new(:edit), edit_pay_period_path(pay_period) %>
+      <%= link_to Icon.new(:delete), pay_period_path(pay_period), class: "alert", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
     </p>
   <% end %>
 </div>
 
 <%- content_for :secondary_content do -%>
-  <%= link_to "New pay period", new_pay_period_path %>
+  <%= link_to "#{Icon.new(:add)} New pay period".html_safe, new_pay_period_path, class: "button" %>
 <%- end -%>

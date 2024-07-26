@@ -4,24 +4,35 @@
   grid-template-rows: auto;
   row-gap: var(--line-height);
   column-gap: 1rem;
-}
 
-.pay_periods > div {
-  min-width: 25rem; // magic-number: determined by eye for long content
-}
+  & > div {
+    min-width: 25rem; // magic-number: determined by eye for long content
+  }
 
-.pay_periods:has(> p.actions) {
-  grid-template-columns: min-content min-content;
+  &:has(.actions) {
+    grid-template-columns: min-content 4rem;
+  }
+
+  .actions {
+    a + a {
+      margin-left: 0.5rem;
+    }
+  }
 }
 
 .simple-calendar {
+  .date {
+    position: relative;
+    z-index: 2;
+  }
+
   .pay_period_indicator {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1;
+    z-index: 1;
 
     &.odd {
       background-color: #adfbfd;

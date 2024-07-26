@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "calendar" do %>
+  <%- current_pay_period = nil -%>
+  <%- cycle_counter = "even" -%>
+
+  <%= calendar(number_of_days: @calendar_presenter.number_of_days, start_date: @calendar_presenter.start_date) do |date| %>
+    <span class="date" title="<%= date.to_fs(:long) %>"><%= date.strftime(date.day == 1 ? "%d %b" : "%d") %></span>
+
+    <%- pay_period = @calendar_presenter.pay_period_for_date(date) -%>
+    <%- if pay_period.blank? -%>
+      <%= link_to "", new_pay_period_path(pay_period: {start_date: date}, start_date: @calendar_presenter.start_date), class: "pay_period_indicator", data: {turbo_frame: "management_form"} %>
+    <%- else -%>
+      <%- if pay_period != current_pay_period -%>
+        <%- current_pay_period = pay_period -%>
+        <%- cycle_counter = (cycle_counter == "odd" ? "even" : "odd") -%>
+      <%- end -%>
+
+      <%= link_to "", edit_pay_period_path(pay_period, start_date: @calendar_presenter.start_date), class: "pay_period_indicator #{cycle_counter}", data: {pay_period_id: pay_period.id, turbo_frame: "management_form"} %>
+    <%- end -%>
+  <%- end -%>
+<%- end -%>

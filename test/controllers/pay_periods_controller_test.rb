@@ -47,7 +47,20 @@ class PayPeriodsControllerTest < ActionDispatch::IntegrationTest
 
   should "update pay_period" do
     patch pay_period_url(@pay_period), params: { pay_period: { end_date: @pay_period.end_date, start_date: @pay_period.start_date } }
-    assert_redirected_to pay_period_url(@pay_period)
+    assert_redirected_to pay_periods_url
+  end
+
+  should "update pay_period in a turbo frame" do
+    old_start_date = @pay_period.start_date
+    new_start_date = old_start_date + 4
+    patch pay_period_url(@pay_period, format: :turbo_stream), params: {
+      start_date: Date.today + 4,
+      pay_period: { start_date: new_start_date }
+    }
+    @pay_period.reload
+    assert_equal new_start_date, @pay_period.start_date, "Should have updated the PayPeriod"
+    assert response.body.include?("Pay period updated"), "Should respond with a user-facing message"
+    assert_calendar_starts_on Date.today + 4
   end
 
   should "destroy pay_period" do
@@ -58,7 +71,16 @@ class PayPeriodsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to pay_periods_url
   end
 
+  should "destroy pay_period in a turbo frame" do
+    assert_difference("PayPeriod.count", -1) do
+      delete pay_period_url(@pay_period)
+    end
+
+    assert_redirected_to pay_periods_url
+  end
+
   private def assert_calendar_starts_on(expected_start_date)
-    assert_select ".calendar-day:first-of-type .date[title=\"#{expected_start_date.to_fs(:long)}\"]"
+    true_start_date = expected_start_date - expected_start_date.wday # Adjust to Sunday
+    assert_select ".calendar-day:first-of-type .date[title=\"#{true_start_date.to_fs(:long)}\"]", {}, "Should render the calendar starting on #{true_start_date}"
   end
 end

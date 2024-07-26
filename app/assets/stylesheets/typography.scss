@@ -24,6 +24,10 @@ p, ul, ol {
 
 a, a:link, a:visited {
   color: blue;
+
+  &.alert {
+    color: var(--color-alert);
+  }
 }
 
 a:hover {
@@ -32,4 +36,27 @@ a:hover {
 
 a:active {
   color: blueviolet;
+}
+
+a.button {
+  display: inline-block;
+  border-radius: 6px;
+
+  padding: calc(0.5 * var(--line-height)) 0.5rem;
+
+  background-color: var(--color-button);
+  color: #fff;
+  text-decoration: none;
+
+  &[data-turbo-method="delete"] {
+    background-color: var(--color-alert);
+  }
+}
+
+.notice {
+  color: var(--color-notice);
+}
+
+.alert {
+  color: var(--color-alert);
 }

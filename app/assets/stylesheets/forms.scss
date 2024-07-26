@@ -10,6 +10,20 @@ form {
     margin-bottom: var(--line-height);
   }
 
+  div.actions {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  div.errors {
+    color: var(--color-alert);
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  }
+
   label {
     text-wrap: nowrap;
   }
@@ -25,7 +39,7 @@ form {
 
     padding: calc(0.5 * var(--line-height)) 0.5rem;
 
-    background-color: #8a5fd3;
+    background-color: var(--color-button);
     color: #fff;
   }
 }

@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "management_form" do %>
+  <%= turbo_frame_tag "management_form" do %>
+    <span class="notice"><%= Icon.new(:notice) %> Pay period deleted</span>
+  <%- end -%>
+<%- end -%>
+
+<%= turbo_stream.replace "calendar" do %>
+  <%= render partial: "calendar" %>
+<%- end -%>
