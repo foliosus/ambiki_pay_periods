@@ -8,10 +8,10 @@
   }
 
   .notice {
-    --flash-color: #5dcd29;
+    --flash-color: var(--color-notice);
   }
 
   .alert {
-    --flash-color: #e44c26;
+    --flash-color: var(--color-alert);
   }
 }
