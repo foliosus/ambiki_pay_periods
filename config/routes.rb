@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root "pay_periods#index"
 
   resources :pay_periods do
+    member do
+      post :update_with_adjacent_pay_periods
+    end
     collection do
       get :calendar
     end

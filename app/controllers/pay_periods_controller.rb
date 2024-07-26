@@ -59,6 +59,13 @@ class PayPeriodsController < ApplicationController
     end
   end
 
+  def update_with_adjacent_pay_periods
+    set_pay_period
+    @pay_period.update_and_correct_adjacent_pay_periods(pay_period_params)
+    load_calendar_presenter
+    render :calendar
+  end
+
   # DELETE /pay_periods/1
   def destroy
     set_pay_period
@@ -82,7 +89,6 @@ class PayPeriodsController < ApplicationController
   private def set_calendar_start_date
     @calendar_start_date = params[:start_date] ? Date.parse(params[:start_date]) : Date.today
     @calendar_start_date = @calendar_start_date - @calendar_start_date.wday # Align to SUnday
-    Rails.logger.warn("  *** set @calendar_start_date to #{@calendar_start_date.inspect}")
   end
 
   private def load_calendar_presenter

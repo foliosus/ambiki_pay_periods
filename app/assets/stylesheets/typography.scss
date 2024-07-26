@@ -23,7 +23,7 @@ p, ul, ol {
 }
 
 a, a:link, a:visited {
-  color: blue;
+  color: var(--color-link);
 
   &.alert {
     color: var(--color-alert);
@@ -31,11 +31,11 @@ a, a:link, a:visited {
 }
 
 a:hover {
-  color: rebeccapurple;
+  color: var(--color-link-hover);
 }
 
 a:active {
-  color: blueviolet;
+  color: var(--color-link-active);
 }
 
 a.button {

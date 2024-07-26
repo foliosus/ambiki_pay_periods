@@ -67,4 +67,6 @@ group :test do
   gem "selenium-webdriver"
 
   gem "shoulda"
+  gem "mocha"
+  gem "rails-controller-testing"
 end

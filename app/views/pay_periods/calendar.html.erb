@@ -4,7 +4,7 @@
 
 <%- content_for :secondary_content do -%>
   <h3>Instructions</h3>
-  <p>Click on a pay period to edit it</p>
+  <p>Click on a pay period to edit it, or drag the dark handle at the start of a period to move the boundary</p>
   <p>Click on an empty day to add a <%= link_to "new pay period", new_pay_period_path(start_date: @calendar_presenter.start_date), data: {turbo_frame: "management_form"} %></p>
 
   <%= turbo_frame_tag "management_form" do %>

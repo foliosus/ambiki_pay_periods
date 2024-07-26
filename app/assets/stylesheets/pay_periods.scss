@@ -21,6 +21,12 @@
 }
 
 .simple-calendar {
+  .calendar-day {
+    .draghover {
+      border-left: 2px solid var(--color-link-active);
+    }
+  }
+
   .date {
     position: relative;
     z-index: 2;
@@ -40,6 +46,20 @@
 
     &.even {
       background-color: #98e6e8;
+    }
+  }
+
+  .drag_handle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border: 1px solid #222;
+    z-index: 2;
+
+    &:hover {
+      cursor: ew-resize;
     }
   }
 }

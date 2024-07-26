@@ -63,6 +63,15 @@ class PayPeriodsControllerTest < ActionDispatch::IntegrationTest
     assert_calendar_starts_on Date.today + 4
   end
 
+  should "update with the adjacent pay periods" do
+    PayPeriod.any_instance
+      .expects(:update_and_correct_adjacent_pay_periods)
+      .returns(true) # Ensure the right kind of update happens; the deets are unit-tested in the PayPeriodTest
+    post update_with_adjacent_pay_periods_pay_period_path(@pay_period), params: {pay_period: {start_date: @pay_period.start_date + 1}}
+    assert_response :success
+    assert_template "pay_periods/calendar"
+  end
+
   should "destroy pay_period" do
     assert_difference("PayPeriod.count", -1) do
       delete pay_period_url(@pay_period)

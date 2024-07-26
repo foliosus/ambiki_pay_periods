@@ -1,4 +1,4 @@
-<div class="simple-calendar" data-controller="calendar">
+<%= content_tag :div, {class: "simple-calendar"}.merge(calendar.options[:turbo_frame_options] || {}) do %>
   <div class="calendar-heading">
     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
 
@@ -25,4 +25,4 @@
       <% end %>
     <% end %>
   </div> <!-- /table-grid -->
-</div> <!-- /simple-calendar -->
+<% end -%> <!-- /simple-calendar -->
